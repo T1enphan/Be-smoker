@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SachController;
+use App\Http\Controllers\ThanhVienController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +25,18 @@ Route::group(['prefix'  =>  '/admin'], function () {
         Route::delete('/xoa-sach/{id}', [SachController::class, 'xoaSach']);
         Route::put('/cap-nhat-sach', [SachController::class, 'capNhatSach']);
         Route::put('/doi-trang-thai', [SachController::class, 'doiTrangThaiSach']);
+    });
+});
+
+Route::group(['prefix'  =>  '/admin'], function () {
+    Route::group(['prefix'  =>  '/thanh-vien'], function () {
+        // Lấy dữ liệu  -> get
+        Route::get('/lay-du-lieu', [ThanhVienController::class, 'getData']);
+        Route::post('/tim-thanh-vien', [ThanhVienController::class, 'searchThanhVien']);
+        Route::post('/tao-thanh-vien', [ThanhVienController::class, 'createThanhVien']);
+        Route::delete('/xoa-thanh-vien/{id}', [ThanhVienController::class, 'xoaThanhVien']);
+        Route::put('/cap-nhat-thanh-vien', [ThanhVienController::class, 'capNhatThanhVien']);
+        Route::put('/doi-trang-thai', [ThanhVienController::class, 'doiTrangThaiThanhVien']);
+
     });
 });
