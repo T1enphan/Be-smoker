@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChuyenmucController;
 use App\Http\Controllers\SachController;
 use App\Http\Controllers\ThanhVienController;
 use Illuminate\Http\Request;
@@ -37,6 +38,18 @@ Route::group(['prefix'  =>  '/admin'], function () {
         Route::delete('/xoa-thanh-vien/{id}', [ThanhVienController::class, 'xoaThanhVien']);
         Route::put('/cap-nhat-thanh-vien', [ThanhVienController::class, 'capNhatThanhVien']);
         Route::put('/doi-trang-thai', [ThanhVienController::class, 'doiTrangThaiThanhVien']);
+
+    });
+});
+Route::group(['prefix'  =>  '/admin'], function () {
+    Route::group(['prefix'  =>  '/chuyen-muc'], function () {
+        // Lấy dữ liệu  -> get
+        Route::get('/lay-du-lieu', [ChuyenmucController::class, 'getData']);
+        Route::post('/tao-chuyen-muc', [ChuyenmucController::class, 'createChuyenMuc']);
+        Route::post('/tim-chuyen-muc', [ChuyenmucController::class, 'searchChuyenMuc']);
+        Route::put('/doi-trang-thai', [ChuyenmucController::class, 'doiTrangThaiChuyenMuc']);
+        Route::delete('/xoa-chuyen-muc/{id}', [ChuyenmucController::class, 'xoaChuyenMuc']);
+        Route::put('/cap-nhat-chuyen-muc', [ChuyenmucController::class, 'capNhatChuyenMuc']);
 
     });
 });
