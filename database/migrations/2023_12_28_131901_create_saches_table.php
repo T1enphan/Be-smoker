@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('hinh_anh');
             $table->string('mo_ta_ngan');
             $table->string('mo_ta_chi_tiet');
+            $table->integer('tinh_trang');
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SachController;
 use App\Http\Controllers\ThanhVienController;
 use Illuminate\Http\Request;
@@ -18,13 +19,25 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'  =>  '/admin'], function () {
     // Những gì của danh mục thì ta sẽ nhét ở group này
     Route::group(['prefix'  =>  '/sach'], function () {
-        // Lấy dữ liệu  -> get
+        // Lấy dữ liệu  -> get  
         Route::get('/lay-du-lieu', [SachController::class, 'getData']);
         Route::post('/tim-sach', [SachController::class, 'searchSach']);
         Route::post('/tao-sach', [SachController::class, 'createSach']);
         Route::delete('/xoa-sach/{id}', [SachController::class, 'xoaSach']);
         Route::put('/cap-nhat-sach', [SachController::class, 'capNhatSach']);
         Route::put('/doi-trang-thai', [SachController::class, 'doiTrangThaiSach']);
+    });
+});
+Route::group(['prefix'  =>  '/admin'], function () {
+    // Những gì của danh mục thì ta sẽ nhét ở group này
+    Route::group(['prefix'  =>  '/admin'], function () {
+        // Lấy dữ liệu  -> get  
+        Route::get('/lay-du-lieu', [AdminController::class, 'getData']);
+        Route::post('/tim-admin', [AdminController::class, 'searchAdmin']);
+        Route::post('/tao-admin', [AdminController::class, 'createAdmin']);
+        Route::delete('/xoa-admin/{id}', [AdminController::class, 'xoaAdmin']);
+        Route::put('/cap-nhat-admin', [AdminController::class, 'capNhatAdmin']);
+        Route::put('/doi-trang-thai', [AdminController::class, 'doiTrangThaiAdmin']);
     });
 });
 
