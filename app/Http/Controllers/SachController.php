@@ -50,6 +50,7 @@ class SachController extends Controller
         'hinh_anh' => $request->hinh_anh,
         'mo_ta_ngan' => $request->mo_ta_ngan,
         'mo_ta_chi_tiet' => $request->mo_ta_chi_tiet,
+        'tinh_trang' => $request->tinh_trang,
             
         ]);
 

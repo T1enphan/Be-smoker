@@ -20,5 +20,6 @@ class Sach extends Model
             'hinh_anh',
             'mo_ta_ngan',
             'mo_ta_chi_tiet',
+            'tinh_trang',
     ];
 }
