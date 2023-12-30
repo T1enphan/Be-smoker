@@ -40,9 +40,6 @@ Route::group(['prefix'  =>  '/admin'], function () {
         Route::put('/doi-trang-thai', [ThanhVienController::class, 'doiTrangThaiThanhVien']);
 
     });
-});
-
-Route::group(['prefix'  =>  '/admin'], function () {
     Route::group(['prefix'  =>  '/khoa'], function () {
         // Lấy dữ liệu  -> get
         Route::get('/lay-du-lieu', [KhoaController::class, 'getData']);
@@ -54,3 +51,14 @@ Route::group(['prefix'  =>  '/admin'], function () {
 
     });
 });
+
+    Route::group(['prefix'  =>  '/khoa'], function () {
+        // Lấy dữ liệu  -> get
+        Route::get('/lay-du-lieu', [KhoaController::class, 'getData']);
+        Route::post('/tim-khoa', [KhoaController::class, 'searchKhoa']);
+        Route::post('/tao-khoa', [KhoaController::class, 'createKhoa']);
+        Route::delete('/xoa-khoa/{id}', [KhoaController::class, 'xoaKhoa']);
+        Route::put('/cap-nhat-khoa', [KhoaController::class, 'capNhatKhoa']);
+        Route::put('/doi-trang-thai', [KhoaController::class, 'doiTrangThaiKhoa']);
+
+    });
