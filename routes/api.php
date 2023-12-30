@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ChuyenmucController;
 use App\Http\Controllers\SachController;
+use App\Http\Controllers\TacgiaController;
 use App\Http\Controllers\ThanhVienController;
+use App\Http\Controllers\TheloaiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +52,26 @@ Route::group(['prefix'  =>  '/admin'], function () {
         Route::put('/doi-trang-thai', [ChuyenmucController::class, 'doiTrangThaiChuyenMuc']);
         Route::delete('/xoa-chuyen-muc/{id}', [ChuyenmucController::class, 'xoaChuyenMuc']);
         Route::put('/cap-nhat-chuyen-muc', [ChuyenmucController::class, 'capNhatChuyenMuc']);
+
+    });
+    Route::group(['prefix'  =>  '/tac-gia'], function () {
+        // Lấy dữ liệu  -> get
+        Route::get('/lay-du-lieu', [TacgiaController::class, 'getData']);
+        Route::post('/tao-tac-gia', [TacgiaController::class, 'createTacgia']);
+        Route::post('/tim-tac-gia', [TacgiaController::class, 'searchTacgia']);
+        Route::put('/doi-trang-thai', [TacgiaController::class, 'doiTrangThaiTacgia']);
+        Route::delete('/xoa-tac-gia/{id}', [TacgiaController::class, 'xoaTacgia']);
+        Route::put('/cap-nhat-tac-gia', [TacgiaController::class, 'capNhatTacgia']);
+
+    });
+    Route::group(['prefix'  =>  '/the-loai'], function () {
+        // Lấy dữ liệu  -> get
+        Route::get('/lay-du-lieu', [TheloaiController::class, 'getData']);
+        Route::post('/tao-the-loai', [TheloaiController::class, 'createTheloai']);
+        Route::post('/tim-the-loai', [TheloaiController::class, 'searchTheloai']);
+        Route::put('/doi-trang-thai', [TheloaiController::class, 'doiTrangThaiTheloai']);
+        Route::delete('/xoa-the-loai/{id}', [TheloaiController::class, 'xoaTheloai']);
+        Route::put('/cap-nhat-the-loai', [TheloaiController::class, 'capNhatTheloai']);
 
     });
 });
