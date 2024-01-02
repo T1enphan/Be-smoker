@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->date('ngay_sinh');
-            $table->integer('so_dien_thoai');
+            $table->string('so_dien_thoai');
             $table->integer('tinh_trang');
             $table->timestamps();
         });

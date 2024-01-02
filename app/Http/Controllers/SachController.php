@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\chuyenmuc;
 use App\Models\Sach;
+use App\Models\tacgia;
+use App\Models\theloai;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class SachController extends Controller
@@ -16,50 +20,52 @@ class SachController extends Controller
 
     public function getData()
     {
-        $data   = Sach::get(); // get là ra 1 danh sách
+        // $data = Sach::join('chuyenmucs', 'saches.id_chuyen_muc', 'chuyenmucs.id')
+        //     ->join('tacgias', 'saches.id_tac_gia', 'tacgias.id')
+        //     ->join('theloais', 'saches.id_the_loai', 'theloais.id')
+        //     ->select('saches.*', 'tacgias.ten_tac_gia', 'theloais.ten_the_loai', 'chuyenmucs.ten_chuyen_muc')
+        //     ->get();
+        // return response()->json([
+        //     'data' => $data,
+        // ]);
+        $data = DB::table('saches')
+            ->join('chuyenmucs', 'saches.id_chuyen_muc', 'chuyenmucs.id')
+            ->join('tacgias', 'saches.id_tac_gia', 'tacgias.id')
+            ->join('theloais', 'saches.id_the_loai', 'theloais.id')
+            ->select('saches.*', 'tacgias.ten_tac_gia', 'theloais.ten_the_loai', 'chuyenmucs.ten_chuyen_muc')
+            ->get();
 
         return response()->json([
-            'sach'  =>  $data,
+            'data' => $data,
         ]);
     }
 
-    // public function searchBan(Request $request)
-    // {
-    //     $key = "%" . $request->abc . "%";
 
-    //     $data   = Ban::join('khu_vucs', 'khu_vucs.id', 'bans.id_khu_vuc')
-    //         ->where('bans.ten_ban', 'like', $key)
-    //         ->select('bans.*', 'khu_vucs.ten_khu')
-    //         ->get(); // get là ra 1 danh sách
-
-    //     return response()->json([
-    //         'ban'  =>  $data,
-    //     ]);
-    // }
 
     public function createSach(Request $request)
     {
-       Sach::create([
-        'ten_sach' => $request->ten_sach,       
-        'slug_sach' => $request->slug_sach,
-        'id_the_loai' => $request->id_the_loai,
-        'id_chuyen_muc' => $request->id_chuyen_muc,
-        'nam_xuat_ban' => $request->nam_xuat_ban,
-        'id_tac_gia' => $request->id_tac_gia,
-        'so_luong' => $request->so_luong,
-        'hinh_anh' => $request->hinh_anh,
-        'mo_ta_ngan' => $request->mo_ta_ngan,
-        'mo_ta_chi_tiet' => $request->mo_ta_chi_tiet,
-        'tinh_trang' => $request->tinh_trang,
-            
+        Sach::create([
+            'ten_sach' => $request->ten_sach,
+            'slug_sach' => $request->slug_sach,
+            'id_the_loai' => $request->id_the_loai,
+            'id_chuyen_muc' => $request->id_chuyen_muc,
+            'nam_xuat_ban' => $request->nam_xuat_ban,
+            'id_tac_gia' => $request->id_tac_gia,
+            'so_luong' => $request->so_luong,
+            'hinh_anh' => $request->hinh_anh,
+            'mo_ta_ngan' => $request->mo_ta_ngan,
+            'mo_ta_chi_tiet' => $request->mo_ta_chi_tiet,
+            'tinh_trang' => $request->tinh_trang,
+
         ]);
 
         return response()->json([
             'status'            =>   true,
-            'message'           =>   'Đã tạo mới bàn thành công!',
+            'message'           =>   'Đã tạo mới sách thành công!',
         ]);
     }
-    public function xoaSach($id){
+    public function xoaSach($id)
+    {
         try {
             Sach::where('id', $id)->delete();
             return response()->json([
@@ -79,7 +85,7 @@ class SachController extends Controller
         try {
             Sach::where('id', $request->id)
                 ->update([
-                    'ten_sach' => $request->ten_sach,       
+                    'ten_sach' => $request->ten_sach,
                     'slug_sach' => $request->slug_sach,
                     'id_the_loai' => $request->id_the_loai,
                     'id_chuyen_muc' => $request->id_chuyen_muc,

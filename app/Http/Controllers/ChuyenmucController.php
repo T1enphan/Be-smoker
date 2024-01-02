@@ -84,7 +84,7 @@ class ChuyenmucController extends Controller
             chuyenmuc::where('id', $id)->delete();
             return response()->json([
                 'status'            =>   true,
-                'message'           =>   'Xóa danh mục thành công!',
+                'message'           =>   'Xóa chuyên mục thành công!',
             ]);
         } catch (Exception $e) {
             Log::info("Lỗi", $e);

@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('tacgias', function (Blueprint $table) {
             $table->id();
             $table->string('ten_tac_gia');
-            $table->string('but_danh');
-            $table->string('ngay_sinh');
+            $table->string('but_danh')->nullable();
+            $table->date('ngay_sinh')->nullable();
             $table->string('giai_doan_sang_tac');
             $table->string('tac_pham');
+            $table->string('hinh_anh')->nullable();
             $table->integer('tinh_trang');
             $table->timestamps();
         });
