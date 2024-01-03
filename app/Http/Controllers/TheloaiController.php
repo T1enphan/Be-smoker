@@ -33,7 +33,7 @@ class TheloaiController extends Controller
 
         return response()->json([
             'status'            =>   true,
-            'message'           =>   'Đã tạo mới chuyên mục thành công!',
+            'message'           =>   'Đã tạo mới thể loại thành công!',
         ]);
     }
     public function searchTheloai(Request $request)
@@ -53,7 +53,7 @@ class TheloaiController extends Controller
             'the_loai'  =>  $data,
         ]);
     }
-  
+
     public function doiTrangThaiTheloai(Request $request)
     {
         try {

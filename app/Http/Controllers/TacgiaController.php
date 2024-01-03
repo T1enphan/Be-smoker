@@ -20,7 +20,7 @@ class TacgiaController extends Controller
             'tac_pham',
             'tinh_trang',
         )
-            ->get(); // get là ra 1 danh sách
+            ->get();
         return response()->json([
             'tac_gia'  =>  $data,
         ]);
@@ -39,7 +39,7 @@ class TacgiaController extends Controller
 
         return response()->json([
             'status'            =>   true,
-            'message'           =>   'Đã tạo mới chuyên mục thành công!',
+            'message'           =>   'Đã tạo mới tác giả thành công!',
         ]);
     }
     public function searchTacgia(Request $request)
@@ -53,7 +53,7 @@ class TacgiaController extends Controller
             'ngay_sinh',
             'giai_doan_sang_tac',
             'tac_pham',
-            'tinh_trang' 
+            'tinh_trang'
         )
             ->where('ten_tac_gia', 'like', $key)
             ->get();
@@ -93,7 +93,7 @@ class TacgiaController extends Controller
             tacgia::where('id', $id)->delete();
             return response()->json([
                 'status'            =>   true,
-                'message'           =>   'Xóa danh mục thành công!',
+                'message'           =>   'Xóa tác giả thành công!',
             ]);
         } catch (Exception $e) {
             Log::info("Lỗi", $e);
@@ -103,6 +103,7 @@ class TacgiaController extends Controller
             ]);
         }
     }
+
     public function capNhatTacgia(Request $request)
     {
         try {
