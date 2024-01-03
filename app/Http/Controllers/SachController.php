@@ -13,28 +13,31 @@ use Illuminate\Support\Facades\Log;
 
 class SachController extends Controller
 {
-    public function index()
+    public function searchSach(Request $request)
     {
-        return view('sach');
+        $key = "%" . $request->abc . "%";
+        $data = Sach::join('chuyenmucs', 'saches.id_chuyen_muc', 'chuyenmucs.id')
+                    ->join('tacgias', 'saches.id_tac_gia', 'tacgias.id')
+                    ->join('theloais', 'saches.id_the_loai', 'theloais.id')
+                    ->select('saches.*', 'tacgias.ten_tac_gia', 'theloais.ten_the_loai', 'chuyenmucs.ten_chuyen_muc')
+                    ->where('ten_sach', 'like', $key)
+                    ->orWhere('ten_tac_gia','like', $key)
+                    ->orWhere('ten_the_loai','like', $key)
+                    ->orWhere('ten_chuyen_muc','like', $key)
+                    ->get();
+        return response()->json([
+            'data'  =>  $data,
+        ]);
     }
 
     public function getData()
     {
-        // $data = Sach::join('chuyenmucs', 'saches.id_chuyen_muc', 'chuyenmucs.id')
-        //     ->join('tacgias', 'saches.id_tac_gia', 'tacgias.id')
-        //     ->join('theloais', 'saches.id_the_loai', 'theloais.id')
-        //     ->select('saches.*', 'tacgias.ten_tac_gia', 'theloais.ten_the_loai', 'chuyenmucs.ten_chuyen_muc')
-        //     ->get();
-        // return response()->json([
-        //     'data' => $data,
-        // ]);
-        $data = DB::table('saches')
-            ->join('chuyenmucs', 'saches.id_chuyen_muc', 'chuyenmucs.id')
+
+        $data = Sach::join('chuyenmucs', 'saches.id_chuyen_muc', 'chuyenmucs.id')
             ->join('tacgias', 'saches.id_tac_gia', 'tacgias.id')
             ->join('theloais', 'saches.id_the_loai', 'theloais.id')
             ->select('saches.*', 'tacgias.ten_tac_gia', 'theloais.ten_the_loai', 'chuyenmucs.ten_chuyen_muc')
             ->get();
-
         return response()->json([
             'data' => $data,
         ]);
