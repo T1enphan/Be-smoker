@@ -42,9 +42,6 @@ class SachController extends Controller
             'data' => $data,
         ]);
     }
-
-
-
     public function createSach(Request $request)
     {
         Sach::create([
