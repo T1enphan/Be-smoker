@@ -12,6 +12,7 @@ class TheloaiController extends Controller
     public function getData()
     {
         $data   = theloai::select(
+            'id',
             'ten_the_loai',
             'slug_the_loai',
             'tinh_trang',

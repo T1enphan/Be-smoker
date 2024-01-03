@@ -12,6 +12,7 @@ class TacgiaController extends Controller
     public function getData()
     {
         $data   = tacgia::select(
+            'id',
             'ten_tac_gia',
             'but_danh',
             'ngay_sinh',
