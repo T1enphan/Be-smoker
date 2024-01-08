@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KhoaController;
 use App\Http\Controllers\ChuyenmucController;
+use App\Http\Controllers\NhacungcapController;
 use App\Http\Controllers\SachController;
 use App\Http\Controllers\TacgiaController;
 use App\Http\Controllers\ThanhVienController;
@@ -92,5 +93,15 @@ Route::group(['prefix'  =>  '/admin'], function () {
         Route::put('/doi-trang-thai', [TheloaiController::class, 'doiTrangThaiTheloai']);
         Route::delete('/xoa-the-loai/{id}', [TheloaiController::class, 'xoaTheloai']);
         Route::put('/cap-nhat-the-loai', [TheloaiController::class, 'capNhatTheloai']);
+    });
+    Route::group(['prefix'  =>  '/nha-cung-cap'], function () {
+        // Lấy dữ liệu  -> get
+        Route::get('/lay-du-lieu', [NhacungcapController::class, 'getData']);
+        Route::post('/tao-nha-cung-cap', [NhacungcapController::class, 'createNhacungcap']);
+        Route::post('/tim-nha-cung-cap', [NhacungcapController::class, 'searchNhacungcap']);
+        Route::put('/doi-trang-thai', [NhacungcapController::class, 'doiTrangThaiNhacungcap']);
+        Route::delete('/xoa-nha-cung-cap/{id}', [NhacungcapController::class, 'xoaNhacungcap']);
+        Route::put('/cap-nhat-nha-cung-cap', [NhacungcapController::class, 'capNhatNhacungcap']);
+
     });
 });
