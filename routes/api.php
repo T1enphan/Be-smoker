@@ -21,6 +21,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::post('/login', [AdminController::class, 'login']);
+// Route::post('/register', [AdminController::class, 'register']);
+Route::post('/check', [AdminController::class, 'check']);
+Route::delete('/remove-token/{id}', [AdminController::class, 'removeToken']);
+
+
 Route::group(['prefix'  =>  '/admin'], function () {
     // Những gì của danh mục thì ta sẽ nhét ở group này
     Route::group(['prefix'  =>  '/sach'], function () {
