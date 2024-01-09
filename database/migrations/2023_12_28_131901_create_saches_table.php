@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('id_tac_gia')->nullable();
             $table->integer('so_luong');
             $table->text('hinh_anh');
-            $table->string('mo_ta_ngan');
-            $table->string('mo_ta_chi_tiet');
+            $table->longText('mo_ta_ngan');
+            $table->longText('mo_ta_chi_tiet');
             $table->integer('tinh_trang');
             $table->timestamps();
         });

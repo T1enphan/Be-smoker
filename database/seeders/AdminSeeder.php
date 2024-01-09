@@ -19,26 +19,18 @@ class AdminSeeder extends Seeder
             [
                 'ho_va_ten'    => 'Tấn Thành',
                 'email'        => 'tanthanh@gmail.com',
-                'password'     => '123456',
+                'password'     => bcrypt("123456"),
                 'ngay_sinh'    => '2003-2-25',
                 'so_dien_thoai'=> '0399183534',
-                'tinh_trang'   => random_int(0, 1),
+                'tinh_trang'   => 1,
             ],
             [
-                'ho_va_ten'    => 'Tấn Thành1',
-                'email'        => 'tanthanh@gmail.com',
-                'password'     => '123456',
+                'ho_va_ten'    => 'admin',
+                'email'        => 'admin@gmail.com',
+                'password'     => bcrypt("123456"),
                 'ngay_sinh'    => '2003-2-25',
                 'so_dien_thoai'=> '0399183534',
-                'tinh_trang'   => random_int(0, 1),
-            ],
-            [
-                'ho_va_ten'    => 'Tấn Thành2',
-                'email'        => 'tanthanh@gmail.com',
-                'password'     => '123456',
-                'ngay_sinh'    => '2003-2-25',
-                'so_dien_thoai'=> '0399183534',
-                'tinh_trang'   => random_int(0, 1),
+                'tinh_trang'   => 1,
             ],
 
         ]);
