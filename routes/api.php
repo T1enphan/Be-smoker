@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChiTietSachController;
 use App\Http\Controllers\KhoaController;
 use App\Http\Controllers\ChuyenmucController;
 use App\Http\Controllers\NhacungcapController;
@@ -102,6 +103,10 @@ Route::group(['prefix'  =>  '/admin'], function () {
         Route::put('/doi-trang-thai', [NhacungcapController::class, 'doiTrangThaiNhacungcap']);
         Route::delete('/xoa-nha-cung-cap/{id}', [NhacungcapController::class, 'xoaNhacungcap']);
         Route::put('/cap-nhat-nha-cung-cap', [NhacungcapController::class, 'capNhatNhacungcap']);
-
     });
+    Route::group(['prefix'  =>  '/chi-tiet-sach'], function () {
+        // Lấy dữ liệu  -> get
+        Route::post('/the-loai', [ChiTietSachController::class, 'getDataTheLoai']);
+    });
+
 });
