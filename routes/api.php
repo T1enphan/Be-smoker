@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChiTietMuonSachController;
 use App\Http\Controllers\ChiTietSachController;
 use App\Http\Controllers\KhoaController;
 use App\Http\Controllers\ChuyenmucController;
@@ -105,8 +106,11 @@ Route::group(['prefix'  =>  '/admin'], function () {
         Route::put('/cap-nhat-nha-cung-cap', [NhacungcapController::class, 'capNhatNhacungcap']);
     });
     Route::group(['prefix'  =>  '/chi-tiet-sach'], function () {
-        // Lấy dữ liệu  -> get
         Route::post('/the-loai', [ChiTietSachController::class, 'getDataTheLoai']);
     });
-
+    Route::group(['prefix'  =>  '/chi-tiet-muon-sach'], function () {
+        // Lấy dữ liệu  -> get
+        Route::get('/lay-du-lieu', [ChiTietMuonSachController::class, 'getData']);
+        Route::post('/tao-muon-sach', [ChiTietMuonSachController::class, 'createMuonSach']);
+    });
 });

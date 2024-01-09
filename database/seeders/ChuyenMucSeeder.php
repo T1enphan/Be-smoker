@@ -59,23 +59,11 @@ class ChuyenMucSeeder extends Seeder
                 'slug_chuyen_muc'           => Str::slug('Nghệ thuật và Âm nhạc'),
                 'tinh_trang'                => random_int(0, 1),
             ],
-            //1
-            [
-                'ten_chuyen_muc'            => 'Tủ Lạnh Nhiều Cửa',
-                'slug_chuyen_muc'           => Str::slug('Tủ Lạnh Nhiều Cửa'),
-                'tinh_trang'                => random_int(0, 1),
-            ],
-            [
-                'ten_chuyen_muc'            => 'Tủ Lạnh Ngăn Đá Dưới',
-                'slug_chuyen_muc'           => Str::slug('Tủ Lạnh Ngăn Đá Dưới'),
-                'tinh_trang'                => random_int(0, 1),
-            ],
             [
                 'ten_chuyen_muc'            => 'Tôn giáo và Tín ngưỡng',
                 'slug_chuyen_muc'           => Str::slug('Tôn giáo và Tín ngưỡng'),
                 'tinh_trang'                => random_int(0, 1),
             ],
-            //2
             [
                 'ten_chuyen_muc'            => 'Môi trường và Bảo tồn',
                 'slug_chuyen_muc'           => Str::slug('Môi trường và Bảo tồn'),

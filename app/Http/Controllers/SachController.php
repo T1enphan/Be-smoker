@@ -17,14 +17,14 @@ class SachController extends Controller
     {
         $key = "%" . $request->abc . "%";
         $data = Sach::join('chuyenmucs', 'saches.id_chuyen_muc', 'chuyenmucs.id')
-                    ->join('tacgias', 'saches.id_tac_gia', 'tacgias.id')
-                    ->join('theloais', 'saches.id_the_loai', 'theloais.id')
-                    ->select('saches.*', 'tacgias.ten_tac_gia', 'theloais.ten_the_loai', 'chuyenmucs.ten_chuyen_muc')
-                    ->where('ten_sach', 'like', $key)
-                    ->orWhere('ten_tac_gia','like', $key)
-                    ->orWhere('ten_the_loai','like', $key)
-                    ->orWhere('ten_chuyen_muc','like', $key)
-                    ->get();
+            ->join('tacgias', 'saches.id_tac_gia', 'tacgias.id')
+            ->join('theloais', 'saches.id_the_loai', 'theloais.id')
+            ->select('saches.*', 'tacgias.ten_tac_gia', 'theloais.ten_the_loai', 'chuyenmucs.ten_chuyen_muc')
+            ->where('ten_sach', 'like', $key)
+            ->orWhere('ten_tac_gia', 'like', $key)
+            ->orWhere('ten_the_loai', 'like', $key)
+            ->orWhere('ten_chuyen_muc', 'like', $key)
+            ->get();
         return response()->json([
             'data'  =>  $data,
         ]);
@@ -32,7 +32,6 @@ class SachController extends Controller
 
     public function getData()
     {
-
         $data = Sach::join('chuyenmucs', 'saches.id_chuyen_muc', 'chuyenmucs.id')
             ->join('tacgias', 'saches.id_tac_gia', 'tacgias.id')
             ->join('theloais', 'saches.id_the_loai', 'theloais.id')
