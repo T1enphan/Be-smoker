@@ -64,7 +64,7 @@ class NhacungcapController extends Controller
 
         return response()->json([
             'status'            =>   true,
-            'message'           =>   'Đã tạo mới thành viên thành công!',
+            'message'           =>   'Đã tạo mới nhà cung cấp thành công!',
         ]);
     }
     public function xoaNhacungcap($id)
@@ -73,7 +73,7 @@ class NhacungcapController extends Controller
             nhacungcap::where('id', $id)->delete();
             return response()->json([
                 'status'            =>   true,
-                'message'           =>   'Xóa thành viên thành công!',
+                'message'           =>   'Xóa nhà cung cấp thành công!',
             ]);
         } catch (Exception $e) {
             Log::info("Lỗi", $e);

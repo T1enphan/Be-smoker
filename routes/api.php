@@ -112,5 +112,8 @@ Route::group(['prefix'  =>  '/admin'], function () {
         // Lấy dữ liệu  -> get
         Route::get('/lay-du-lieu', [ChiTietMuonSachController::class, 'getData']);
         Route::post('/tao-muon-sach', [ChiTietMuonSachController::class, 'createMuonSach']);
+        Route::delete('/xoa-thong-tin/{id}', [ChiTietMuonSachController::class, 'xoaThongTin']);
+        Route::put('/doi-trang-thai', [ChiTietMuonSachController::class, 'doiTrangThai']);
+        Route::post('/tim-thong-tin', [ChiTietMuonSachController::class, 'searchThongTin']);
     });
 });
